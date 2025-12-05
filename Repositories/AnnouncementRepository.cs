@@ -12,7 +12,11 @@ namespace CORCEGuideApp.Repositories
     {
         public async Task<List<Announcement>> GetAllActiveAnnouncementsAsync()
         {
-            return await dataContext.Announcements.AsNoTracking().ToListAsync();
+            return await dataContext.Announcements
+        .Include(a => a.Category)
+        .AsNoTracking()
+        .Where(a => a.IsActive)
+        .ToListAsync();
         }
 
         public async Task<Announcement?> GetAnnouncementByIdAsync(int announcementId)
@@ -41,9 +45,11 @@ namespace CORCEGuideApp.Repositories
 
             existingAnnouncement.Title = announcement.Title;
             existingAnnouncement.Content = announcement.Content;
-            existingAnnouncement.DatePosted = announcement.DatePosted;
+            existingAnnouncement.DatePosted = DateTime.Now;
             existingAnnouncement.ImagePath = announcement.ImagePath;
-            existingAnnouncement.Category = announcement.Category;
+
+            // FIX REAL
+            existingAnnouncement.CategoryId = announcement.CategoryId;
 
             dataContext.Announcements.Update(existingAnnouncement);
             await dataContext.SaveChangesAsync();

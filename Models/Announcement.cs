@@ -13,7 +13,8 @@ namespace CORCEGuideApp.Models
         public string Content { get; set; } = string.Empty;
         public string? ImagePath { get; set; }
         public DateTime DatePosted { get; set; }
-        public Category? Category { get; set; }
+        public Category Category { get; set; }
+        public int CategoryId { get; set; }   // 👈 Clave foránea obligatoria
         public ICollection<Favorite>? Favorites { get; set; }
         public bool IsActive { get; set; } = true;
     }

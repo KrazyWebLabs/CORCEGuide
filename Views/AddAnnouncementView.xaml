@@ -2,11 +2,49 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CORCEGuideApp.Views.AddAnnouncementView"
+             xmlns:vm="clr-namespace:CORCEGuideApp.ViewModels"
+             x:DataType="vm:AnnouncementViewModel"
              Title="AddAnnouncementView">
-    <VerticalStackLayout>
+    <VerticalStackLayout Margin="10">
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Add New Announcement"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        
+        <Label Text="Category Name"/>
+        
+        <Entry 
+            Text="{Binding Title}"
+            Placeholder="Enter announcement tittle"/>
+
+        <Entry 
+            Text="{Binding Content}"
+            Placeholder="Enter content"/>
+
+        <!-- Imagen -->
+        <Border
+                HeightRequest="200"
+                WidthRequest="200"
+                HorizontalOptions="Center">
+            <Image Source="{Binding ImagePath}"
+                    Aspect="AspectFill"
+                    HeightRequest="200"
+                    WidthRequest="200" />
+        </Border>
+
+        <Button Text="Select Image"
+                 Command="{Binding SelectImageCommand}"
+                 BackgroundColor="#1976D2"
+                 TextColor="White"
+                 CornerRadius="10" />
+
+        <Picker
+                Title="Selecciona una categoría"
+                ItemsSource="{Binding Categories}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding SelectedCategory}" />
+
+        <Button Text="Add Category"
+            Command="{Binding AddAnnouncementCommand}"/>
     </VerticalStackLayout>
 </ContentPage>

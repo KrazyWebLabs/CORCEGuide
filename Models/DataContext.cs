@@ -59,6 +59,8 @@ namespace CORCEGuideApp.Models
                 .WithMany(c => c.Announcements)
                 .HasForeignKey("CategoryId");
 
+            
+
         }
     }
 }
