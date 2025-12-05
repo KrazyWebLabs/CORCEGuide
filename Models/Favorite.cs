@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace CORCEGuideApp.Models
 {
-    internal class Favorite
+    public class Favorite
     {
+        public int FavoriteId { get; set; }
+        public User? User { get; set; }
+        public Announcement? Announcement { get; set; }
     }
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CORCEGuideApp.Views.AddCategoryView"
+             xmlns:vm="clr-namespace:CORCEGuideApp.ViewModels"
+             x:DataType="vm:CategoryViewModel"
+             Title="AddCategoryView">
+    <VerticalStackLayout Margin="10">
+        <Label 
+            Text="Add New Category"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Label Text="Category Name"/>
+        <Entry 
+            Text="{Binding Name}"
+            Placeholder="Enter category name"/>
+
+        <Button Text="Add Category"
+                Command="{Binding AddCategoryCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>

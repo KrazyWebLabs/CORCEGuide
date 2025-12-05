@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace CORCEGuideApp.Models
 {
-    internal class Announcement
+    public class Announcement
     {
+        public int AnnouncementId { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public string Content { get; set; } = string.Empty;
+        public string? ImagePath { get; set; }
+        public DateTime DatePosted { get; set; }
+        public Category? Category { get; set; }
+        public ICollection<Favorite>? Favorites { get; set; }
+        public bool IsActive { get; set; } = true;
     }
 }

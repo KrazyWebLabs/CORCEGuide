@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace CORCEGuideApp.Models
 {
-    internal class Role
+    public class Role
     {
+        public int RoleId { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public ICollection<User>? Users { get; set; }
+        public bool IsActive { get; set; } = true;
     }
 }
