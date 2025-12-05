@@ -14,6 +14,12 @@ public partial class MainCategoryView : ContentPage
         this.categoryViewModel = categoryViewModel;
     }
 
+    protected async override void OnAppearing()
+    {
+        base.OnAppearing();
+        await categoryViewModel.LoadCategoriesAsync();
+    }
+
     //private async void OnCategorySelected(object sender, SelectionChangedEventArgs e)
     //{
     //    if ( this.categoryViewModel.SelectedCategory != null )
